@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 function App() {
   const [name, setName] = useState("");
@@ -7,13 +8,14 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name.trim()) {
+    const lowerCaseName = name.trim().toLowerCase();
+    if (lowerCaseName) {
       setNames((prevNames) => {
         const newNames = { ...prevNames };
-        if (newNames[name]) {
-          newNames[name]++;
+        if (newNames[lowerCaseName]) {
+          newNames[lowerCaseName]++;
         } else {
-          newNames[name] = 1;
+          newNames[lowerCaseName] = 1;
         }
         return newNames;
       });
@@ -25,7 +27,7 @@ function App() {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
 
-  console.log(sortedNames);
+  // console.log(sortedNames);
 
   return (
     <div className="App">
@@ -53,15 +55,16 @@ function App() {
           </button>
         </form>
         <ul className="w-full max-w-md">
-          {sortedNames.map(([name, count]) => (
-            <li
-              key={name}
-              className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center transform transition-all duration-500 ease-in-out"
-            >
-              <span>{name}</span>
-              <span className="text-gray-600">{count}</span>
-            </li>
-          ))}
+          <TransitionGroup component={null}>
+            {sortedNames.map(([name, count]) => (
+              <CSSTransition key={name} timeout={500} classNames="item">
+                <li className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center">
+                  <span>{name}</span>
+                  <span className="text-gray-600">{count}</span>
+                </li>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </ul>
       </div>
     </div>

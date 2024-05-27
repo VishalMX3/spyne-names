@@ -17,6 +17,7 @@ Method 2: Clone the [Source Code](https://github.com/VishalMX3/spyne-names) and 
 
 - When the form, containing the name input, is submitted, a function `handlesubmit` is called.
 - If the input is not empty, `setNames` function is called which updates the `names` state.
+- Note: The `name` is converted to lower case to maintain consistency.
 - If the `name` already exists in the `names` object, its count is incremented; otherwise, the `name` is added with a count of 1.
 
 > Rendering top 10 frequemt names:
@@ -27,6 +28,6 @@ Method 2: Clone the [Source Code](https://github.com/VishalMX3/spyne-names) and 
 - Stored in a new array called `sortedNames`.
 - Rendered the `sortedNames` array using `map()` function, in the form of list.
 
-> Styling
+> Styling and Transitions
 
-- Used Tailwind CSS
+- Used Tailwind CSS and `react-transition-group`
