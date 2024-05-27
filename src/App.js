@@ -28,7 +28,7 @@ function App() {
   console.log(sortedNames);
 
   return (
-    <div className="App bg-black">
+    <div className="App">
       <form onSubmit={handleSubmit} className="flex space-x-2 mb-4">
         <input
           type="text"
@@ -44,6 +44,17 @@ function App() {
           Submit
         </button>
       </form>
+      <ul className="w-full max-w-md">
+        {sortedNames.map(([name, count]) => (
+          <li
+            key={name}
+            className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center"
+          >
+            <span>{name}</span>
+            <span className="text-gray-600">{count}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
