@@ -29,32 +29,36 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={handleSubmit} className="flex space-x-2 mb-4">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
-          placeholder="Enter name"
-        />
-        <button
-          type="submit"
-          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        >
-          Submit
-        </button>
-      </form>
-      <ul className="w-full max-w-md">
-        {sortedNames.map(([name, count]) => (
-          <li
-            key={name}
-            className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center"
+      <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+        <h1 className="text-3xl font-bold mb-4">Top 10 Names</h1>
+
+        <form onSubmit={handleSubmit} className="flex space-x-2 mb-4">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="p-2 border border-gray-300 rounded"
+            placeholder="Enter name"
+          />
+          <button
+            type="submit"
+            className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
           >
-            <span>{name}</span>
-            <span className="text-gray-600">{count}</span>
-          </li>
-        ))}
-      </ul>
+            Submit
+          </button>
+        </form>
+        <ul className="w-full max-w-md">
+          {sortedNames.map(([name, count]) => (
+            <li
+              key={name}
+              className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center"
+            >
+              <span>{name}</span>
+              <span className="text-gray-600">{count}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
