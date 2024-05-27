@@ -51,7 +51,7 @@ function App() {
           {sortedNames.map(([name, count]) => (
             <li
               key={name}
-              className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center"
+              className="bg-white p-4 mb-2 rounded shadow-md flex justify-between items-center transform transition-all duration-500 ease-in-out"
             >
               <span>{name}</span>
               <span className="text-gray-600">{count}</span>
