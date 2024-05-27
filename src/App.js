@@ -29,8 +29,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-        <h1 className="text-3xl font-bold mb-4">Top 10 Names</h1>
+      <div className=" bg-gradient-to-r from-purple-600 to-blue-600 min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+        <h1 className="text-3xl font-bold mb-4 text-white">Top 10 Names</h1>
 
         <form onSubmit={handleSubmit} className="flex space-x-2 mb-4">
           <input
@@ -42,9 +42,14 @@ function App() {
           />
           <button
             type="submit"
-            className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            className="group relative inline-flex items-center justify-start overflow-hidden rounded-full px-5 py-3 font-bold"
           >
-            Submit
+            <span className="absolute left-0 top-0 h-32 w-32 -translate-y-2 translate-x-12 rotate-45 bg-black opacity-[3%]"></span>
+            <span className="absolute left-0 top-0 -mt-1 h-48 w-48 -translate-x-56 -translate-y-24 rotate-45 bg-black opacity-100 transition-all duration-500 ease-in-out group-hover:-translate-x-8"></span>
+            <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
+              Submit
+            </span>
+            <span className="absolute inset-0 rounded-full border-2 border-white"></span>
           </button>
         </form>
         <ul className="w-full max-w-md">
