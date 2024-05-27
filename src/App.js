@@ -3,10 +3,29 @@ import "./App.css";
 
 function App() {
   const [name, setName] = useState("");
+  const [names, setNames] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
+    if (name.trim()) {
+      setNames((prevNames) => {
+        const newNames = { ...prevNames };
+        if (newNames[name]) {
+          newNames[name]++;
+        } else {
+          newNames[name] = 1;
+        }
+        return newNames;
+      });
+      setName("");
+    }
   };
+
+  const sortedNames = Object.entries(names)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+
+  console.log(sortedNames);
 
   return (
     <div className="App bg-black">
